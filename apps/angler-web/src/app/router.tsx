@@ -1,0 +1,11 @@
+import { createBrowserRouter } from 'react-router-dom';
+import { Layout } from './Layout';
+import { HomePage } from '../pages/Home/HomePage';
+import { TripDetailPage } from '../pages/TripDetail/TripDetailPage';
+import { BookingPage } from '../pages/Booking/BookingPage';
+import { OrdersPage } from '../pages/Orders/OrdersPage';
+import { PublishPage } from '../pages/Publish/PublishPage';
+import { ProfilePage } from '../pages/Profile/ProfilePage';
+import { CaptainPage } from '../pages/Captain/CaptainPage';
+import { AdminPage } from '../pages/Admin/AdminPage';
+export const router=createBrowserRouter([{path:'/',element:<Layout/>,children:[{index:true,element:<HomePage/>},{path:'trips/:id',element:<TripDetailPage/>},{path:'booking/:id',element:<BookingPage/>},{path:'orders',element:<OrdersPage/>},{path:'publish',element:<PublishPage/>},{path:'profile',element:<ProfilePage/>},{path:'captain',element:<CaptainPage/>},{path:'admin',element:<AdminPage/>}]}]);

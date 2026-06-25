@@ -1,0 +1,5 @@
+import { useEffect, useState } from 'react';
+import { getBoat, getTrip, type Booking } from '../../data/mock';
+import { listBookings } from '../../features/bookings/bookingService';
+const label:any={paid:'已支付',pending:'待支付',cancelled:'已取消',refunded:'已退款',waitlist:'候补中'};
+export function OrdersPage(){const [orders,setOrders]=useState<Booking[]>([]);useEffect(()=>{listBookings().then(setOrders)},[]);return <section className="section"><h1 className="section-title">我的订单</h1><p className="muted">查看报名、候补、退款与出行状态</p><div style={{display:'grid',gap:16,marginTop:22}}>{orders.map(o=>{const trip=getTrip(o.tripId)||getTrip('t1')!,boat=getBoat(trip.boatId);return <div className="card" style={{padding:18}} key={o.id}><div className="between"><b>{boat.name}</b><span className={'status status-'+(o.status==='waitlist'?'pending':o.status)}>{label[o.status]}</span></div><div className="muted" style={{fontSize:13,marginTop:10}}>{trip.title} · {o.people} 人</div><div className="between" style={{marginTop:16}}><span className="muted" style={{fontSize:13}}>{o.createdAt}</span><span className="price">¥{o.amount}</span></div></div>})}</div></section>}

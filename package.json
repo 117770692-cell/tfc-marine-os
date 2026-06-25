@@ -1,0 +1,7 @@
+{
+  "name":"tfc-marine-os",
+  "version":"1.0.0-alpha.1",
+  "private":true,
+  "scripts":{"dev":"npm --prefix apps/angler-web run dev","build":"npm --prefix apps/angler-web run build","preview":"npm --prefix apps/angler-web run preview"},
+  "workspaces":["apps/*"]
+}
